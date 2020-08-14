@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.lanxin.custom.IbaseDao">
+    <select id="findpassword" parameterType="String" resultType="String">
+        select password from users where username=#{value}
+    </select>
+
+    <select id="findfunction" parameterType="String" resultType="String">
+        select permission from user_roles ur left join
+        roles_permissions rp on ur.role_name=rp.role_name
+         where ur.username=#{value }
+    </select>
+    <select id="findRoles" parameterType="String" resultType="string">
+        select role_name from user_roles where username=#{value}
+    </select>
+</mapper>
